@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.edu.cibertec.com/pagos"
+            xmlns:tns="http://www.edu.cibertec.com/pagos"
+            elementFormDefault="qualified">
+
+    <!-- Solicitud para listar pagos -->
+    <xsd:element name="ListaPagosRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="fechaInicio" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="fechaFin" type="xsd:string" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Respuesta para listar pagos -->
+    <xsd:element name="ListaPagosResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="listaPagos" type="tns:PagoObject" maxOccurs="unbounded" minOccurs="0"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Solicitud para crear un pago -->
+    <xsd:element name="CreacionPagoRequest">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="fechaPago" type="xsd:string"/>
+                <xsd:element name="montoTotal" type="xsd:double"/>
+                <xsd:element name="moneda" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Respuesta para la creación de un pago -->
+    <xsd:element name="CreacionPagoResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="estado" type="xsd:string"/>
+                <xsd:element name="mensaje" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <!-- Objeto que describe un pago -->
+    <xsd:complexType name="PagoObject">
+        <xsd:sequence>
+            <xsd:element name="idPago" type="xsd:int"/>
+            <xsd:element name="fechaPago" type="xsd:string"/>
+            <xsd:element name="montoTotal" type="xsd:double"/>
+            <xsd:element name="moneda" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <!-- Definición de un objeto de registro de pagos -->
+    <xsd:element name="RegistroPagoObject">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="idPago" type="xsd:int"/>
+                <xsd:element name="fechaPago" type="xsd:string"/>
+                <xsd:element name="montoTotal" type="xsd:double"/>
+                <xsd:element name="moneda" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>
